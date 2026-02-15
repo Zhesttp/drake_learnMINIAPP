@@ -1,0 +1,1212 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --money-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    --success-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    --gold-gradient: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+    --dark-bg: #0a0a0f;
+    --darker-bg: #050508;
+    --card-bg: rgba(255, 255, 255, 0.05);
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.7);
+    --accent: #00f2fe;
+    --money-color: #f6d365;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    background: var(--darker-bg);
+    color: var(--text-primary);
+    overflow-x: hidden;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    touch-action: pan-y;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    user-select: none;
+}
+
+/* Разрешаем выделение текста только в нужных местах */
+.slide-body,
+.faq-answer,
+.step-text,
+.instruction-step {
+    user-select: text;
+    -webkit-user-select: text;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* Загрузочная страница */
+.loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--darker-bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.loader.fade-out {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.loader-content {
+    text-align: center;
+    position: relative;
+}
+
+.loader-logo {
+    position: relative;
+    width: 300px;
+    height: 80px;
+    margin: 0 auto 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    animation: logoFadeIn 1s ease-in-out;
+}
+
+@keyframes logoFadeIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.loader-progress {
+    width: 300px;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 2px;
+    margin: 0 auto 20px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+    background: var(--primary-gradient);
+    border-radius: 2px;
+    width: 0%;
+    animation: progress 2s ease forwards;
+}
+
+@keyframes progress {
+    0% { width: 0%; }
+    100% { width: 100%; }
+}
+
+.loader-text {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    animation: fadeIn 1s ease 0.5s both;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Стартовая страница */
+.start-page {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.start-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+.floating-shapes {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.shape {
+    position: absolute;
+    border-radius: 50%;
+    background: var(--primary-gradient);
+    opacity: 0.1;
+    animation: float 20s infinite ease-in-out;
+}
+
+.shape-1 {
+    width: 300px;
+    height: 300px;
+    top: 10%;
+    left: 10%;
+    animation-delay: 0s;
+}
+
+.shape-2 {
+    width: 200px;
+    height: 200px;
+    top: 60%;
+    right: 15%;
+    animation-delay: 5s;
+    background: var(--money-gradient);
+}
+
+.shape-3 {
+    width: 150px;
+    height: 150px;
+    bottom: 20%;
+    left: 20%;
+    animation-delay: 10s;
+    background: var(--success-gradient);
+}
+
+.shape-4 {
+    width: 250px;
+    height: 250px;
+    top: 30%;
+    right: 30%;
+    animation-delay: 15s;
+    background: var(--gold-gradient);
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+    33% {
+        transform: translate(30px, -30px) rotate(120deg);
+    }
+    66% {
+        transform: translate(-20px, 20px) rotate(240deg);
+    }
+}
+
+.start-content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    animation: fadeInUp 1s ease;
+}
+
+.start-title {
+    font-size: clamp(3rem, 8vw, 6rem);
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 30px;
+}
+
+.title-line {
+    display: block;
+}
+
+.title-line.highlight {
+    background: var(--gold-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.start-subtitle {
+    font-size: clamp(1.2rem, 3vw, 2rem);
+    color: var(--text-secondary);
+    margin-bottom: 15px;
+}
+
+.start-platforms {
+    font-size: 1.1rem;
+    color: var(--accent);
+    margin-bottom: 60px;
+    font-weight: 500;
+}
+
+.start-button {
+    background: var(--primary-gradient);
+    border: none;
+    color: white;
+    padding: 20px 50px;
+    font-size: 1.3rem;
+    font-weight: 600;
+    border-radius: 50px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 15px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.start-button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.start-button:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+.start-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 30px rgba(102, 126, 234, 0.5);
+}
+
+.start-button span {
+    position: relative;
+    z-index: 1;
+}
+
+.arrow-icon {
+    width: 24px;
+    height: 24px;
+    position: relative;
+    z-index: 1;
+    transition: transform 0.3s ease;
+}
+
+.start-button:hover .arrow-icon {
+    transform: translateX(5px);
+}
+
+.pulse {
+    animation: pulse-button 2s ease-in-out infinite;
+}
+
+@keyframes pulse-button {
+    0%, 100% {
+        box-shadow: 0 0 0 0 rgba(102, 126, 234, 0.7);
+    }
+    50% {
+        box-shadow: 0 0 0 20px rgba(102, 126, 234, 0);
+    }
+}
+
+/* Интерактивное обучение */
+.learning {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    position: relative;
+}
+
+.progress-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px;
+    z-index: 100;
+    background: rgba(5, 5, 8, 0.8);
+    backdrop-filter: blur(10px);
+}
+
+.progress-line {
+    width: 100%;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 2px;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+
+.progress-fill {
+    height: 100%;
+    background: var(--primary-gradient);
+    border-radius: 2px;
+    width: 20%;
+    transition: width 0.5s ease;
+}
+
+.progress-text {
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.slides-container {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 100px 20px 150px;
+    position: relative;
+}
+
+.slide {
+    position: absolute;
+    width: 100%;
+    max-width: 900px;
+    opacity: 0;
+    transform: translateX(50px);
+    pointer-events: none;
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.slide.active {
+    opacity: 1;
+    transform: translateX(0);
+    pointer-events: all;
+}
+
+.slide.prev {
+    transform: translateX(-50px);
+}
+
+.slide-content {
+    background: var(--card-bg);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 30px;
+    padding: 60px 40px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.slide-content::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(102, 126, 234, 0.1) 0%, transparent 70%);
+    animation: rotate 20s linear infinite;
+}
+
+.slide-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: bounce 2s ease-in-out infinite;
+    position: relative;
+    z-index: 1;
+    color: var(--accent);
+}
+
+.slide-icon svg {
+    width: 100%;
+    height: 100%;
+}
+
+.slide-icon.large {
+    width: 120px;
+    height: 120px;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+}
+
+.slide-title {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 700;
+    margin-bottom: 25px;
+    background: var(--primary-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    position: relative;
+    z-index: 1;
+}
+
+.slide-text {
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    line-height: 1.8;
+    margin-bottom: 40px;
+    position: relative;
+    z-index: 1;
+}
+
+.slide-highlight {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    margin-top: 40px;
+    position: relative;
+    z-index: 1;
+}
+
+.highlight-item {
+    text-align: center;
+}
+
+.highlight-number {
+    display: block;
+    font-size: 3rem;
+    font-weight: 700;
+    background: var(--gold-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 10px;
+}
+
+.highlight-label {
+    display: block;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+/* Список шагов */
+.steps-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 40px;
+    position: relative;
+    z-index: 1;
+}
+
+.step-item {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 25px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    transition: all 0.3s ease;
+    opacity: 0;
+    transform: translateX(-30px);
+}
+
+.step-item.animate {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.step-item:hover {
+    transform: translateX(10px);
+    border-color: rgba(102, 126, 234, 0.5);
+    box-shadow: 0 10px 30px rgba(102, 126, 234, 0.2);
+}
+
+.step-item.highlight-step {
+    background: var(--primary-gradient);
+    border-color: transparent;
+}
+
+.step-icon {
+    width: 50px;
+    height: 50px;
+    min-width: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent);
+}
+
+.step-icon svg {
+    width: 100%;
+    height: 100%;
+}
+
+.highlight-step .step-icon {
+    color: white;
+}
+
+.step-info {
+    text-align: left;
+    flex: 1;
+}
+
+.step-info h3 {
+    font-size: 1.3rem;
+    margin-bottom: 8px;
+}
+
+.step-info p {
+    color: var(--text-secondary);
+    font-size: 1rem;
+}
+
+/* Платформы */
+.platforms-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    margin-top: 40px;
+    position: relative;
+    z-index: 1;
+}
+
+.platform-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 30px 20px;
+    text-align: center;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    opacity: 0;
+    transform: scale(0.8);
+}
+
+.platform-card.animate {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.platform-card:hover {
+    transform: translateY(-10px) scale(1.05);
+    border-color: rgba(102, 126, 234, 0.5);
+    box-shadow: 0 20px 40px rgba(102, 126, 234, 0.3);
+}
+
+.platform-icon {
+    width: 60px;
+    height: 60px;
+    margin: 0 auto 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent);
+}
+
+.platform-icon svg {
+    width: 100%;
+    height: 100%;
+}
+
+.platform-card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.platform-card p {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+}
+
+/* Объединенная карточка Instagram + Threads */
+.platform-card.combined {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.platform-icons-combined {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 15px;
+    justify-content: center;
+}
+
+.platform-icon-small {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent);
+}
+
+.platform-icon-small svg {
+    width: 100%;
+    height: 100%;
+}
+
+.platform-names {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-bottom: 10px;
+}
+
+.platform-names h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0;
+}
+
+.platform-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-top: 15px;
+}
+
+.platform-stats span:first-child {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--money-color);
+}
+
+.platform-stats span:last-child {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+/* Преимущества */
+.benefits-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 40px;
+    position: relative;
+    z-index: 1;
+}
+
+.benefit-item {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    padding: 20px 25px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    transition: all 0.3s ease;
+    opacity: 0;
+    transform: translateX(-30px);
+}
+
+.benefit-item.animate {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.benefit-item:hover {
+    transform: translateX(10px);
+    border-color: rgba(102, 126, 234, 0.5);
+}
+
+.benefit-check {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--success-gradient);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: white;
+}
+
+.benefit-check svg {
+    width: 24px;
+    height: 24px;
+}
+
+.benefit-text {
+    flex: 1;
+    text-align: left;
+    font-size: 1.1rem;
+}
+
+.benefit-text strong {
+    color: var(--accent);
+}
+
+.money-animation {
+    margin-top: 50px;
+    padding: 30px;
+    background: var(--gold-gradient);
+    border-radius: 20px;
+    position: relative;
+    z-index: 1;
+    animation: moneyPulse 2s ease-in-out infinite;
+}
+
+@keyframes moneyPulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+.money-icon {
+    width: 70px;
+    height: 70px;
+    margin: 0 auto 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--darker-bg);
+}
+
+.money-icon svg {
+    width: 100%;
+    height: 100%;
+}
+
+.money-text {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--darker-bg);
+}
+
+/* Финальный слайд */
+.final-slide {
+    padding: 80px 40px;
+}
+
+.final-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin: 50px 0;
+    position: relative;
+    z-index: 1;
+}
+
+.final-stat {
+    text-align: center;
+}
+
+.final-stat-number {
+    font-size: 3rem;
+    font-weight: 700;
+    background: var(--gold-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 10px;
+}
+
+.final-stat-label {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.final-cta-button {
+    background: var(--primary-gradient);
+    border: none;
+    color: white;
+    padding: 22px 50px;
+    font-size: 1.3rem;
+    font-weight: 600;
+    border-radius: 50px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 15px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    margin-top: 30px;
+    z-index: 1;
+}
+
+.final-cta-button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.final-cta-button:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+.final-cta-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 30px rgba(102, 126, 234, 0.5);
+}
+
+.guarantee-text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 30px;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    position: relative;
+    z-index: 1;
+}
+
+.guarantee-icon {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: var(--success-gradient);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    flex-shrink: 0;
+}
+
+.guarantee-icon svg {
+    width: 16px;
+    height: 16px;
+}
+
+/* Навигация */
+.navigation {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 30px;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    background: rgba(5, 5, 8, 0.8);
+    backdrop-filter: blur(10px);
+    z-index: 100;
+}
+
+.nav-button {
+    background: var(--card-bg);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--text-primary);
+    padding: 15px 30px;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 50px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.3s ease;
+    flex: 1;
+    max-width: 200px;
+    justify-content: center;
+}
+
+.nav-button:hover:not(:disabled) {
+    background: var(--primary-gradient);
+    border-color: transparent;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+}
+
+.nav-button:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+
+.nav-button svg {
+    width: 20px;
+    height: 20px;
+}
+
+/* Мобильная адаптивность для Telegram мини-приложения */
+@media (max-width: 768px) {
+    body {
+        font-size: 14px;
+    }
+    
+    .container {
+        padding: 0 15px;
+    }
+    
+    /* Loader */
+    .loader-logo {
+        width: 250px;
+        height: 60px;
+        margin-bottom: 25px;
+    }
+    
+    .loader-progress {
+        width: 250px;
+    }
+    
+    .loader-text {
+        font-size: 0.9rem;
+    }
+    
+    /* Start Page */
+    .start-title {
+        font-size: clamp(2rem, 8vw, 3.5rem);
+        margin-bottom: 20px;
+    }
+    
+    .start-subtitle {
+        font-size: clamp(1rem, 4vw, 1.3rem);
+        margin-bottom: 10px;
+    }
+    
+    .start-platforms {
+        font-size: 0.9rem;
+        margin-bottom: 40px;
+    }
+    
+    .start-button {
+        padding: 16px 35px;
+        font-size: 1.1rem;
+    }
+    
+    /* Learning Slides */
+    .slides-container {
+        padding: 60px 10px 120px;
+    }
+    
+    .slide-content {
+        padding: 30px 20px;
+        min-height: auto;
+        border-radius: 20px;
+    }
+    
+    .slide-icon {
+        width: 60px;
+        height: 60px;
+        margin-bottom: 20px;
+    }
+    
+    .slide-icon.large {
+        width: 80px;
+        height: 80px;
+    }
+    
+    .slide-title {
+        font-size: clamp(1.5rem, 6vw, 2.2rem);
+        margin-bottom: 15px;
+    }
+    
+    .slide-text {
+        font-size: 1rem;
+        margin-bottom: 25px;
+    }
+    
+    .slide-highlight {
+        flex-direction: column;
+        gap: 20px;
+        margin-top: 25px;
+    }
+    
+    .highlight-number {
+        font-size: 2rem;
+    }
+    
+    .highlight-label {
+        font-size: 0.85rem;
+    }
+    
+    /* Steps */
+    .steps-list {
+        gap: 15px;
+    }
+    
+    .step-item {
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+        padding: 20px;
+    }
+    
+    .step-icon {
+        width: 40px;
+        height: 40px;
+        margin: 0 auto;
+    }
+    
+    .step-info {
+        text-align: center;
+    }
+    
+    .step-info h3 {
+        font-size: 1.1rem;
+    }
+    
+    .step-info p {
+        font-size: 0.9rem;
+    }
+    
+    /* Platforms */
+    .platforms-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .platform-card {
+        padding: 20px 15px;
+    }
+    
+    .platform-icon {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .platform-card h3 {
+        font-size: 1.1rem;
+    }
+    
+    .platform-card p {
+        font-size: 0.85rem;
+    }
+    
+    .platform-icons-combined {
+        gap: 10px;
+    }
+    
+    .platform-icon-small {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .platform-names h3 {
+        font-size: 1rem;
+    }
+    
+    /* Benefits */
+    .benefits-list {
+        gap: 15px;
+    }
+    
+    .benefit-item {
+        padding: 15px;
+        gap: 15px;
+    }
+    
+    .benefit-check {
+        width: 35px;
+        height: 35px;
+    }
+    
+    .benefit-text {
+        font-size: 1rem;
+    }
+    
+    .money-animation {
+        padding: 20px;
+        margin-top: 30px;
+    }
+    
+    .money-icon {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .money-text {
+        font-size: 1.1rem;
+    }
+    
+    /* Final Stats */
+    .final-stats {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .final-stat-number {
+        font-size: 2.2rem;
+    }
+    
+    .final-stat-label {
+        font-size: 0.85rem;
+    }
+    
+    .final-cta-button {
+        padding: 18px 35px;
+        font-size: 1.1rem;
+        width: 100%;
+        max-width: 100%;
+    }
+    
+    /* Navigation */
+    .navigation {
+        flex-direction: column;
+        padding: 20px 15px;
+        gap: 15px;
+    }
+    
+    .nav-button {
+        max-width: 100%;
+        padding: 14px 25px;
+        font-size: 0.95rem;
+    }
+    
+    /* Progress */
+    .progress-container {
+        padding: 15px;
+    }
+    
+    .progress-text {
+        font-size: 0.85rem;
+    }
+}
+
+/* Очень маленькие экраны */
+@media (max-width: 375px) {
+    .start-title {
+        font-size: 2rem;
+    }
+    
+    .slide-content {
+        padding: 25px 15px;
+    }
+    
+    .slide-title {
+        font-size: 1.5rem;
+    }
+    
+    .start-button,
+    .final-cta-button {
+        padding: 14px 30px;
+        font-size: 1rem;
+    }
+    
+    .loader-logo {
+        width: 200px;
+        height: 50px;
+    }
+    
+    .loader-progress {
+        width: 200px;
+    }
+}
