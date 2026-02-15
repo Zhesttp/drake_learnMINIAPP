@@ -90,9 +90,10 @@ body {
 
 /* Slides Section */
 .slides-section {
-    padding: 40px 0 80px;
+    padding: 40px 0 140px;
     background: var(--darker-bg);
     min-height: calc(100vh - 200px);
+    position: relative;
 }
 
 .slides-progress {
@@ -125,11 +126,14 @@ body {
 .slides-container {
     position: relative;
     min-height: 600px;
+    padding-bottom: 120px;
 }
 
 .slide {
     display: none;
     animation: fadeIn 0.5s ease;
+    width: 100%;
+    position: relative;
 }
 
 .slide.active {
@@ -154,6 +158,12 @@ body {
     border-radius: 20px;
     padding: 50px 40px;
     min-height: 500px;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
 }
 
 .slide-title {
@@ -228,6 +238,8 @@ body {
     display: flex;
     gap: 20px;
     align-items: flex-start;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .step-number {
@@ -274,6 +286,8 @@ body {
     background: rgba(255, 255, 255, 0.03);
     border-radius: 15px;
     border: 1px solid rgba(255, 255, 255, 0.1);
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .mechanism-item.highlight {
@@ -310,6 +324,8 @@ body {
     background: rgba(255, 255, 255, 0.03);
     border-radius: 15px;
     border-left: 4px solid var(--accent);
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .instruction-step h3 {
@@ -595,28 +611,41 @@ body {
 
 /* Navigation */
 .slides-navigation {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 15px;
+    padding-bottom: calc(20px + env(safe-area-inset-bottom));
     display: flex;
     justify-content: space-between;
-    gap: 20px;
-    margin-top: 40px;
+    gap: 15px;
+    background: rgba(5, 5, 8, 0.95);
+    backdrop-filter: blur(20px);
+    z-index: 100;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.3);
+    margin-top: 0;
 }
 
 .nav-btn {
-    padding: 15px 30px;
+    padding: 14px 25px;
     background: var(--card-bg);
     border: 1px solid rgba(255, 255, 255, 0.1);
     color: var(--text-primary);
     border-radius: 10px;
     cursor: pointer;
-    font-size: 1rem;
+    font-size: 0.95rem;
     font-weight: 600;
     display: flex;
     align-items: center;
     gap: 10px;
     transition: all 0.3s ease;
     flex: 1;
-    max-width: 200px;
+    max-width: none;
     justify-content: center;
+    min-height: 48px;
+    -webkit-tap-highlight-color: transparent;
 }
 
 .nav-btn:hover:not(:disabled) {
@@ -906,8 +935,12 @@ body {
     
     /* Slides Section */
     .slides-section {
-        padding: 20px 0 60px;
+        padding: 20px 0 140px;
         min-height: auto;
+    }
+    
+    .slides-container {
+        padding-bottom: 140px;
     }
     
     .slides-progress {
@@ -923,9 +956,12 @@ body {
     }
     
     .slide-content {
-        padding: 25px 15px;
+        padding: 30px 20px;
         min-height: auto;
         border-radius: 15px;
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
     }
     
     .slide-title {
@@ -972,6 +1008,8 @@ body {
         flex-direction: column;
         text-align: center;
         gap: 15px;
+        width: 100%;
+        box-sizing: border-box;
     }
     
     .step-number {
@@ -1000,6 +1038,8 @@ body {
         text-align: center;
         padding: 20px;
         gap: 15px;
+        width: 100%;
+        box-sizing: border-box;
     }
     
     .mechanism-icon {
@@ -1018,6 +1058,8 @@ body {
     
     .instruction-step {
         padding: 20px;
+        width: 100%;
+        box-sizing: border-box;
     }
     
     .instruction-step h3 {
@@ -1196,15 +1238,18 @@ body {
     
     /* Navigation */
     .slides-navigation {
-        flex-direction: column;
-        margin-top: 30px;
-        gap: 15px;
+        flex-direction: row;
+        padding: 15px;
+        padding-bottom: calc(15px + env(safe-area-inset-bottom));
+        gap: 12px;
+        margin-top: 0;
     }
     
     .nav-btn {
-        max-width: 100%;
-        padding: 14px 25px;
-        font-size: 0.95rem;
+        max-width: none;
+        padding: 14px 20px;
+        font-size: 0.9rem;
+        flex: 1;
     }
     
     /* FAQ */
