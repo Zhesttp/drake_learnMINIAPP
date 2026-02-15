@@ -1,6 +1,6 @@
 // Slides Management
 let currentSlide = 1;
-const totalSlides = 11;
+const totalSlides = 12;
 
 document.addEventListener('DOMContentLoaded', () => {
     updateProgress();
@@ -31,24 +31,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
     
-    // FAQ Toggle
-    const faqItems = document.querySelectorAll('.faq-item');
-    faqItems.forEach(item => {
-        const question = item.querySelector('.faq-question');
-        question.addEventListener('click', () => {
-            const isActive = item.classList.contains('active');
-            
-            // Close all other items
-            faqItems.forEach(otherItem => {
-                if (otherItem !== item) {
-                    otherItem.classList.remove('active');
-                }
-            });
-            
-            // Toggle current item
-            item.classList.toggle('active', !isActive);
-        });
-    });
+    // Инициализация FAQ при загрузке
+    initFAQ();
     
     // Animate slides on load
     const slides = document.querySelectorAll('.slide');
@@ -91,7 +75,36 @@ function goToSlide(slideNumber) {
         }
         updateProgress();
         updateNavigation();
+        
+        // Переинициализация FAQ при смене слайдов
+        setTimeout(() => {
+            initFAQ();
+        }, 400);
     }, 300);
+}
+
+// Функция инициализации FAQ (доступна глобально)
+function initFAQ() {
+    const faqItems = document.querySelectorAll('.faq-item');
+    faqItems.forEach(item => {
+        const question = item.querySelector('.faq-question');
+        if (question && !question.hasAttribute('data-faq-initialized')) {
+            question.setAttribute('data-faq-initialized', 'true');
+            question.addEventListener('click', () => {
+                const isActive = item.classList.contains('active');
+                
+                // Close all other items
+                faqItems.forEach(otherItem => {
+                    if (otherItem !== item) {
+                        otherItem.classList.remove('active');
+                    }
+                });
+                
+                // Toggle current item
+                item.classList.toggle('active', !isActive);
+            });
+        }
+    });
 }
 
 function updateProgress() {
@@ -120,7 +133,7 @@ function updateNavigation() {
     }
     
     if (nextBtn) {
-        if (currentSlide === 10) {
+        if (currentSlide === 11) {
             nextBtn.innerHTML = 'Завершить <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12H19M19 12L12 5M19 12L12 19"/></svg>';
         } else if (currentSlide === totalSlides) {
             nextBtn.style.display = 'none';
