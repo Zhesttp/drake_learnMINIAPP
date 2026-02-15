@@ -830,6 +830,7 @@ body {
 }
 
 /* FAQ Section */
+/* FAQ Section (standalone) */
 .faq-section {
     padding: 80px 0;
     background: var(--dark-bg);
@@ -855,9 +856,22 @@ body {
     color: var(--text-secondary);
 }
 
+/* FAQ inside slide */
+.faq-slide .slide-body {
+    padding: 0;
+}
+
+.faq-slide .slide-subtitle {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
 .faq-container {
-    max-width: 800px;
-    margin: 0 auto;
+    max-width: 100%;
+    margin: 0;
+    width: 100%;
 }
 
 .faq-item {
@@ -1427,9 +1441,18 @@ body {
         font-size: 0.85rem;
     }
     
+    .faq-item {
+        margin-bottom: 12px;
+        border-radius: 12px;
+    }
+    
     .faq-question {
         padding: 12px 15px;
         font-size: 0.85rem;
+    }
+    
+    .faq-icon {
+        font-size: 1.2rem;
     }
     
     .faq-answer {
@@ -1438,12 +1461,22 @@ body {
     
     .faq-item.active .faq-answer {
         padding: 0 15px 12px;
-        max-height: 300px;
+        max-height: 200px;
     }
     
     .faq-answer p {
         font-size: 0.8rem;
         line-height: 1.5;
+    }
+    
+    .faq-slide .slide-title {
+        font-size: 1.3rem;
+        margin-bottom: 10px;
+    }
+    
+    .faq-slide .slide-subtitle {
+        font-size: 0.85rem;
+        margin-bottom: 15px;
     }
     
     .faq-icon {
