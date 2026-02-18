@@ -2,7 +2,6 @@
 # -*- coding: utf-8 -*-
 import os
 import logging
-import asyncio
 from dotenv import load_dotenv
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup, WebAppInfo
 from telegram.ext import Application, CommandHandler, ContextTypes
@@ -79,7 +78,7 @@ async def post_init(application: Application) -> None:
 def main():
     BOT_TOKEN = os.getenv("BOT_TOKEN")
     if not BOT_TOKEN:
-        print("❌ Ошибка: BOT_TOKEN не найден в .env файле")
+        logger.error("❌ Ошибка: BOT_TOKEN не найден в переменных окружения")
         return
     
     application = (
@@ -94,7 +93,6 @@ def main():
     application.add_handler(CommandHandler("app", app_command))
     
     logger.info("Bot is starting...")
-    print("🤖 Бот запущен! Нажмите Ctrl+C для остановки.")
     application.run_polling(drop_pending_updates=True)
 
 
