@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>Блок 4. TikTok УБТ — алгоритмы и безопасность | Расширенный курс</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="ext-course-page b8-page b7-page">
+    <header class="ext-course-header">
+        <a href="extended-course.html" class="ext-course-back" aria-label="Назад">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24">
+                <path d="M19 12H5M5 12l7 7M5 12l7-7"/>
+            </svg>
+            <span>Назад</span>
+        </a>
+        <h1 class="ext-course-title">Блок 4</h1>
+        <div class="ext-course-header-spacer"></div>
+    </header>
+
+    <main class="ext-course-main b8-main">
+        <div class="b8-hero b7-hero">
+            <h2 class="b8-hero-title">TikTok УБТ</h2>
+            <p class="b8-hero-subtitle">Алгоритмы, форматы, баны и масштаб</p>
+        </div>
+
+        <section class="b8-section b8-card b7-section" id="b4-algo">
+            <h3 class="b8-section-title">4.1 Алгоритм: гео, подписи, поведение</h3>
+            <p>Алгоритм TikTok (<strong>Aegis</strong>) ищет не «лучшее видео по запросу», а лучшее видео для <em>конкретного человека в конкретном месте</em>. В 2026 регион — главный идентификатор.</p>
+            <p><strong>Гео — иерархия сигналов:</strong></p>
+            <ol class="b8-steps">
+                <li><strong>Язык и регион ОС</strong> — главное. iPhone на японском = японец для алгоритма, даже в Берлине.</li>
+                <li>Аккаунт App Store / Google Play (откуда скачан TikTok).</li>
+                <li>История геолокации за 72 часа.</li>
+                <li>IP — слабый фактор, одной смены VPN мало.</li>
+            </ol>
+            <p class="b8-rule-inline">Хочешь топ в Бразилии? Язык системы на португальский, 3 дня листать местный контент — «обучить» алгоритм.</p>
+            <p><strong>Подписи (Context Layer).</strong> TikTok понимает контекст: «я устал» в США = выгорание, в другой стране — иная метка. Целишься на Запад с русского — добавляй английские ключи в описание и субтитры.</p>
+            <p><strong>Прогрев.</strong> Одинаковые действия каждый день (5 лайков в 10:00 и т.п.) = бот → shadowban. Скролл с паузами, разная длительность просмотров.</p>
+        </section>
+
+        <section class="b8-section b8-card b7-section" id="b4-formats">
+            <h3 class="b8-section-title">4.2 Форматы 2026</h3>
+            <p>Выигрывает системный контент. Форматы, которые алгоритм продвигает в топ:</p>
+
+            <div class="b7-tie">
+                <h4 class="b7-tie-title">POV (Point of View)</h4>
+                <p>Зритель = главный герой. «POV: заходишь в банк, долг = 0». Камера — глаза героя: руки, экран, руль. Без селфи. Высокое удержание за счёт эмпатии.</p>
+            </div>
+
+            <div class="b7-tie">
+                <h4 class="b7-tie-title">Скрины дохода</h4>
+                <p>Баланс, чек, статистика кабинета + реакция или закадр. В 2026 AI отличает фотошоп по метаданным — только реальные цифры или художественная подача (графики).</p>
+            </div>
+
+            <div class="b7-tie">
+                <h4 class="b7-tie-title">Реакции (Split Screen)</h4>
+                <p>Сверху — чужое видео, снизу — твоё лицо или процесс (игра, уборка). Два экрана удерживают внимание: если одно скучно, смотрят второе. Растёт время просмотра.</p>
+            </div>
+
+            <div class="b7-tie">
+                <h4 class="b7-tie-title">Loop-видео</h4>
+                <p>Конец перетекает в начало — бесконечный цикл. Рециркуляция (повтор) = рекомендации тысячам. В TikTok работает сильнее, чем в Shorts.</p>
+            </div>
+
+            <div class="b7-tie">
+                <h4 class="b7-tie-title">Геймификация</h4>
+                <p>Кнопка «Купить» на экране, палец нажимает. Интерактивная иллюзия удерживает до конца.</p>
+            </div>
+        </section>
+
+        <section class="b8-section b8-card b7-section" id="b4-bans">
+            <h3 class="b8-section-title">4.3 Баны и ограничения</h3>
+            <p><strong>Account Warning (красная надпись).</strong> Первое нарушение — часто без баллов, дают шанс. Повторные → штрафные баллы на 90 дней → при критической массе пермач. Снять: пройти <strong>Policy Training</strong> (тест по правилам), 14 дней без нарушений.</p>
+
+            <div class="b8-warn b8-warn-no">
+                <p class="b8-warn-title">Триггеры:</p>
+                <ul>
+                    <li>«Переходи по ссылке», упоминания конкурентов в рекламном ключе.</li>
+                    <li>Темы: оружие, алкоголь, мистика за деньги, опасные челленджи.</li>
+                    <li>Защищённая музыка в бизнес-аккаунтах → страйк.</li>
+                </ul>
+            </div>
+
+            <p><strong>Shadowban.</strong> Аккаунт жив, в FYP не попадает. Признаки: просмотры −80–90%, в аналитике «Видео не рекомендуется», трафик в основном из «Профиля». Выход: удалить проблемное видео, пауза 48–72 ч, апелляция «Оспорить», очистка кэша / переустановка.</p>
+
+            <p><strong>Отлёжка.</strong> Новому аккаунту 3–5 дней просто смотреть ленту, как обычный юзер. Чистый поведенческий профиль и траст.</p>
+        </section>
+
+        <section class="b8-section b8-card b7-section" id="b4-scale">
+            <h3 class="b8-section-title">4.4 Масштабирование: фермы и автоматизация</h3>
+            <p>Один канал — потолок. Один провал — нет подушки. В 2026 побеждает объём; рынок уходит от физических ферм к облаку.</p>
+            <p><strong>Ферма контента.</strong> Одна большая единица (интервью, подкаст) → нарезка на 50–100 микророликов с разными сценариями.</p>
+            <p><strong>Цифровая гигиена сетки:</strong></p>
+            <ul class="b8-steps" style="list-style: none; padding-left: 0;">
+                <li><strong>Устройства:</strong> облачные Android-фермы (виртуальные телефоны в дата-центре).</li>
+                <li><strong>Прокси:</strong> резидентский/мобильный на группу или аккаунт. Дешёвые «серые» убивают охваты.</li>
+                <li><strong>SIM/eSIM:</strong> регион eSIM = регион прокси. Физические SIM дают макс. траст.</li>
+                <li><strong>Софт:</strong> антидетект для веба, скрипты с плавающими сценариями (не повторять шаблоны).</li>
+            </ul>
+            <p><strong>Гео-арбитраж.</strong> Смена региона аккаунта под другую монетизацию (например, Нигерия → Польша для выплат за просмотры). Риск: при верификации паспорт должен соответствовать региону аккаунта.</p>
+        </section>
+
+        <div class="b8-summary b8-card b7-section">
+            <h3 class="b8-summary-title">Итог модуля 4</h3>
+            <ol class="b8-steps" style="margin: 0; padding-left: 22px;">
+                <li><strong>Подстройся под гео</strong> — язык и регион устройства, прогрев под целевую страну.</li>
+                <li><strong>Форматы</strong> — POV, скрины, реакции, лупы, геймификация.</li>
+                <li><strong>Здоровье аккаунта</strong> — апелляции, Policy Training, отлёжка новых аккаунтов.</li>
+                <li><strong>Масштаб</strong> — фермы, уникальный цифровой отпечаток на каждый аккаунт.</li>
+            </ol>
+        </div>
+    </main>
+
+    <script>
+        document.querySelectorAll('.b8-section-title').forEach(function(h) { h.setAttribute('tabindex', '0'); });
+        (function() {
+            var sections = document.querySelectorAll('.b7-section');
+            function reveal() {
+                sections.forEach(function(s) {
+                    var rect = s.getBoundingClientRect();
+                    if (rect.top < window.innerHeight * 0.85) s.classList.add('b7-visible');
+                });
+            }
+            reveal();
+            window.addEventListener('scroll', reveal);
+        })();
+    </script>
+</body>
+</html>
