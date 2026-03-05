@@ -1259,12 +1259,20 @@ body {
 @media (max-width: 768px) {
     body {
         font-size: 12px;
+        overflow-x: hidden;
+    }
+    
+    html {
+        overflow-x: hidden;
+    }
+    
+    body:not(.ext-course-page) {
         overflow: hidden;
         height: 100vh;
         height: 100dvh;
     }
     
-    html {
+    html:not(:has(body.ext-course-page)) {
         overflow: hidden;
         height: 100vh;
         height: 100dvh;
@@ -1592,14 +1600,14 @@ body {
     }
 
     /* ---------- Расширенный курс и блоки (страницы block-*.html, extended-course) — под телефон ---------- */
-    body.ext-course-page,
-    .ext-course-page {
-        overflow-x: hidden;
-        overflow-y: auto;
-        height: auto;
-        min-height: 100vh;
-        min-height: 100dvh;
-        -webkit-overflow-scrolling: touch;
+    html:has(body.ext-course-page),
+    body.ext-course-page {
+        overflow-x: hidden !important;
+        overflow-y: auto !important;
+        height: auto !important;
+        min-height: 100vh !important;
+        min-height: 100dvh !important;
+        overscroll-behavior-y: none;
     }
 
     .ext-course-header {
