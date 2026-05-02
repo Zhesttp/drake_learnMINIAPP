@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ru" class="ext-course-doc">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover, interactive-widget=resizes-content">
     <title>Блок 7. Threads — бесплатный трафик | Расширенный курс</title>
     <link rel="stylesheet" href="styles.css">
 </head>
@@ -18,6 +18,7 @@
         <div class="ext-course-header-spacer"></div>
     </header>
 
+    <div class="ext-course-scroll">
     <main class="ext-course-main b8-main">
         <div class="b8-hero b7-hero">
             <h2 class="b8-hero-title">Полный гайд по бесплатному трафику в Threads</h2>
@@ -137,6 +138,7 @@
             <p class="b8-summary-final">Threads даёт бесплатный трафик без миллионов на рекламу. Прогрев → сторителлинг → комментарии → директ → Telegram. Пять рабочих связок и дисциплина по плану — и маховик раскручивается.</p>
         </div>
     </main>
+    </div>
 
     <script src="extended-course.js"></script>
     <script>
@@ -150,7 +152,8 @@
                 });
             }
             reveal();
-            window.addEventListener('scroll', reveal);
+            var scroller = document.querySelector('.ext-course-scroll') || window;
+            scroller.addEventListener('scroll', reveal, { passive: true });
         })();
     </script>
 </body>
