@@ -61,7 +61,30 @@ function initLearning() {
     });
     
     getAccessBtn?.addEventListener('click', () => {
+        const modal = document.getElementById('courseChoiceModal');
+        if (modal) modal.classList.remove('hidden');
+    });
+
+    // Выбор курса: быстрый старт / расширенный
+    const quickStartBtn = document.getElementById('quickStartBtn');
+    const extendedCourseBtn = document.getElementById('extendedCourseBtn');
+    const courseChoiceClose = document.getElementById('courseChoiceClose');
+    const courseChoiceModal = document.getElementById('courseChoiceModal');
+
+    quickStartBtn?.addEventListener('click', () => {
         window.location.href = 'manual.html';
+    });
+
+    extendedCourseBtn?.addEventListener('click', () => {
+        window.location.href = 'extended-course.html';
+    });
+
+    courseChoiceClose?.addEventListener('click', () => {
+        courseChoiceModal?.classList.add('hidden');
+    });
+
+    courseChoiceModal?.addEventListener('click', (e) => {
+        if (e.target === courseChoiceModal) courseChoiceModal.classList.add('hidden');
     });
     
     // Клавиатурная навигация
@@ -194,6 +217,22 @@ function animateCounter(counter) {
     };
     
     updateCounter();
+}
+
+// Заглушка для расширенного курса (сделаем позже)
+function showExtendedCoursePlaceholder() {
+    const toast = document.createElement('div');
+    toast.className = 'course-choice-toast';
+    toast.innerHTML = `
+        <span class="course-choice-toast-icon">📚</span>
+        <span>Расширенный курс в разработке. Скоро!</span>
+    `;
+    document.body.appendChild(toast);
+    requestAnimationFrame(() => toast.classList.add('show'));
+    setTimeout(() => {
+        toast.classList.remove('show');
+        setTimeout(() => toast.remove(), 300);
+    }, 2500);
 }
 
 // Показ сообщения об успехе
